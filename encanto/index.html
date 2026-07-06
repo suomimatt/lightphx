@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Encanto-Palmcroft Historic Streetlight Restoration · City of Phoenix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Source+Sans+3:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#141129;
+  --dusk1:#2B1E45;
+  --dusk2:#6E3A4B;
+  --horizon:#C96B3B;
+  --sun:#E08A4C;
+  --glow:#FFC46B;
+  --glow-bright:#FFE3AE;
+  --cream:#F6EFE2;
+  --ink:#2B2135;
+  --ink-soft:#5A4E63;
+  --line:#E2D6C2;
+  --amber-deep:#A2622B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Source Sans 3',system-ui,sans-serif;
+  font-size:17.5px;line-height:1.65;
+  color:var(--ink);background:var(--cream);
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;
+  background:linear-gradient(180deg,
+    var(--night) 0%, var(--dusk1) 34%, var(--dusk2) 62%, var(--horizon) 88%, var(--sun) 100%);
+}
+.stars{position:absolute;inset:0;pointer-events:none;}
+.stars i{position:absolute;border-radius:50%;background:#fff;}
+@media (prefers-reduced-motion: no-preference){
+  .stars i{animation:twinkle 3.4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:var(--o);}50%{opacity:calc(var(--o)*.3);}}
+}
+
+.lamp-scene{position:relative;margin:0 auto;width:min(88vw,520px);padding-top:8svh;}
+.lamp-glow-field{
+  position:absolute;left:50%;top:28%;
+  width:620px;height:620px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,
+    rgba(255,227,174,.55) 0%, rgba(255,196,107,.28) 26%,
+    rgba(255,170,80,.10) 48%, transparent 70%);
+  pointer-events:none;
+  opacity:0;
+}
+.lamp-globe-fill{opacity:0;}
+/* lamp turn-on sequence */
+@media (prefers-reduced-motion: no-preference){
+  .lit .lamp-globe-fill{animation:ignite 2.1s ease-out forwards;}
+  .lit .lamp-glow-field{animation:ignite 2.1s ease-out forwards, breathe 5.5s ease-in-out 2.4s infinite;}
+  @keyframes ignite{
+    0%{opacity:0;} 8%{opacity:.9;} 14%{opacity:.1;} 22%{opacity:.75;}
+    30%{opacity:.25;} 42%{opacity:1;} 52%{opacity:.85;} 100%{opacity:1;}
+  }
+  @keyframes breathe{
+    0%,100%{transform:translate(-50%,-50%) scale(1);}
+    50%{transform:translate(-50%,-50%) scale(1.05);}
+  }
+  .hero-text > *{opacity:0;transform:translateY(14px);animation:rise .9s ease forwards;}
+  .hero-text > :nth-child(1){animation-delay:1.5s;}
+  .hero-text > :nth-child(2){animation-delay:1.7s;}
+  .hero-text > :nth-child(3){animation-delay:1.95s;}
+  .hero-text > :nth-child(4){animation-delay:2.2s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+@media (prefers-reduced-motion: reduce){
+  .lamp-globe-fill,.lamp-glow-field{opacity:1;}
+}
+.lamp-svg{display:block;margin:0 auto;width:clamp(120px,26vw,180px);position:relative;}
+
+/* palm silhouettes on the horizon */
+.palms{
+  position:absolute;left:0;right:0;bottom:76px;height:150px;
+  pointer-events:none;
+}
+.palms svg{position:absolute;bottom:0;fill:rgba(20,17,41,.82);}
+
+.hero-text{position:relative;text-align:center;padding:16px 24px 0;}
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--glow);margin-bottom:18px;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(34px,7.2vw,64px);line-height:1.06;
+  color:var(--cream);max-width:17ch;margin:0 auto;
+}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--glow-bright);}
+.lede{color:rgba(246,239,226,.82);max-width:54ch;margin:22px auto 0;font-size:17px;}
+.status{
+  display:inline-flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;
+  margin:28px auto 0;
+  font-family:'Space Mono',monospace;font-size:12.5px;
+  color:rgba(246,239,226,.75);
+  border:1px solid rgba(246,239,226,.25);
+  border-radius:100px;padding:10px 22px;
+  backdrop-filter:blur(2px);
+}
+.status b{color:var(--glow);font-weight:400;}
+.ground{position:relative;height:76px;margin-top:40px;}
+.ground::before{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--night);}
+.cue{
+  position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+  color:rgba(246,239,226,.65);
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+}
+@media (prefers-reduced-motion: no-preference){
+  .cue{animation:bob 2.2s ease-in-out 3s infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,6px);}}
+}
+
+/* ================= TICKER ================= */
+.ticker{
+  background:var(--night);
+  color:rgba(246,239,226,.85);
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;
+  padding:13px 0;overflow:hidden;white-space:nowrap;
+}
+.ticker .tk{display:inline-block;padding-left:100%;}
+@media (prefers-reduced-motion: no-preference){
+  .ticker .tk{animation:scroll 28s linear infinite;}
+  @keyframes scroll{to{transform:translateX(-100%);}}
+}
+.ticker b{color:var(--glow);font-weight:400;}
+
+/* ================= CONTENT ================= */
+.section{padding:76px 0;}
+.label{
+  font-family:'Space Mono',monospace;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber-deep);margin-bottom:20px;
+}
+.about h2{
+  font-family:'Fraunces',serif;font-weight:400;
+  font-size:clamp(26px,4.5vw,38px);line-height:1.15;
+  max-width:24ch;margin-bottom:22px;
+}
+.about p{max-width:64ch;color:var(--ink-soft);margin-bottom:16px;font-size:17px;}
+
+.phases{margin-top:44px;position:relative;padding-left:34px;}
+.phases::before{
+  content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--glow),var(--line));
+}
+.phase{position:relative;padding:0 0 30px;}
+.phase:last-child{padding-bottom:0;}
+.phase::before{
+  content:"";position:absolute;left:-30px;top:7px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--cream);border:2.5px solid var(--amber-deep);
+}
+.phase.current::before{
+  background:var(--glow);border-color:var(--glow);
+  box-shadow:0 0 0 6px rgba(255,196,107,.28), 0 0 18px rgba(255,196,107,.65);
+}
+@media (prefers-reduced-motion: no-preference){
+  .phase.current::before{animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 6px rgba(255,196,107,.28), 0 0 18px rgba(255,196,107,.65);}
+    50%{box-shadow:0 0 0 10px rgba(255,196,107,.16), 0 0 26px rgba(255,196,107,.85);}
+  }
+}
+.phase .p-name{font-family:'Fraunces',serif;font-weight:600;font-size:19px;}
+.phase.current .p-name::after{
+  content:"NOW";
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;
+  color:var(--cream);background:var(--amber-deep);
+  border-radius:100px;padding:3px 9px;margin-left:10px;position:relative;top:-2px;
+}
+.phase .p-desc{color:var(--ink-soft);font-size:15.5px;max-width:56ch;}
+
+/* ================= GALLERY ================= */
+.log{padding-top:0;}
+.log h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(26px,4.5vw,38px);}
+.log-intro{color:var(--ink-soft);max-width:60ch;margin:14px 0 10px;font-size:16px;}
+.tap-hint{
+  font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+  color:var(--amber-deep);margin-bottom:40px;
+}
+.entry{
+  margin-bottom:60px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.entry.vis{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){.entry{opacity:1;transform:none;transition:none;}}
+.entry:last-child{margin-bottom:0;}
+.entry-date{
+  display:inline-block;
+  font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.08em;
+  color:var(--amber-deep);
+  border:1px solid var(--line);border-radius:100px;
+  padding:5px 14px;margin-bottom:16px;background:#fff;
+}
+.frame{
+  background:#fff;padding:12px 12px 0;border-radius:8px;cursor:zoom-in;
+  box-shadow:0 2px 6px rgba(43,33,53,.08), 0 20px 48px -18px rgba(43,33,53,.3);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.entry:nth-child(odd) .frame{transform:rotate(-.5deg);}
+.entry:nth-child(even) .frame{transform:rotate(.5deg);}
+.frame:hover{
+  transform:rotate(0deg) translateY(-4px) scale(1.01);
+  box-shadow:0 4px 10px rgba(43,33,53,.1), 0 30px 60px -18px rgba(43,33,53,.38);
+}
+.frame img{width:100%;height:auto;display:block;border-radius:4px;}
+.entry-caption{padding:14px 6px 16px;font-size:15.5px;color:var(--ink-soft);}
+.empty-note{
+  border:1.5px dashed var(--line);border-radius:10px;
+  padding:34px 26px;
+  font-family:'Space Mono',monospace;font-size:14px;color:var(--ink-soft);
+  background:#fff;
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(20,17,41,.94);
+  display:none;align-items:center;justify-content:center;
+  flex-direction:column;padding:26px;
+  cursor:zoom-out;
+}
+.lightbox.open{display:flex;}
+.lightbox img{
+  max-width:100%;max-height:78svh;border-radius:6px;
+  box-shadow:0 20px 80px rgba(0,0,0,.6);
+}
+.lightbox .lb-cap{
+  color:rgba(246,239,226,.85);font-size:15px;max-width:64ch;
+  text-align:center;margin-top:18px;
+}
+.lightbox .lb-close{
+  position:absolute;top:18px;right:22px;
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.15em;
+  color:var(--glow);background:none;border:1px solid rgba(255,196,107,.5);
+  border-radius:100px;padding:8px 18px;cursor:pointer;
+}
+
+/* ================= CREDIT + FOOTER ================= */
+.credit{border-top:1px solid var(--line);padding:40px 0 44px;text-align:center;}
+.credit .c-line{
+  font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px;
+}
+.credit img{width:min(300px,72vw);height:auto;display:block;margin:0 auto;}
+footer{
+  background:var(--night);color:rgba(246,239,226,.72);
+  padding:26px 0 34px;font-size:13.5px;text-align:center;
+}
+footer .foot-line{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;
+  margin-top:6px;color:rgba(246,239,226,.45);
+}
+
+@media (max-width:560px){
+  .section{padding:58px 0;}
+  body{font-size:16.5px;}
+  .palms{bottom:76px;height:110px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="hero">
+  <div class="stars" id="stars"></div>
+
+  <div class="lamp-scene">
+    <div class="lamp-glow-field"></div>
+    <svg class="lamp-svg" viewBox="0 0 160 640" aria-hidden="true">
+      <defs>
+        <radialGradient id="globe" cx="50%" cy="42%" r="60%">
+          <stop offset="0%" stop-color="#FFF6DF"/>
+          <stop offset="45%" stop-color="#FFE3AE"/>
+          <stop offset="100%" stop-color="#FFB95C"/>
+        </radialGradient>
+      </defs>
+      <path d="M80 2 C85 9 86 16 82 23 L78 23 C74 16 75 9 80 2 Z" fill="#0E0B20"/>
+      <path d="M69 23 C74 19 86 19 91 23 C88 28 72 28 69 23 Z" fill="#0E0B20"/>
+      <rect x="76" y="26" width="8" height="6" fill="#0E0B20"/>
+      <path d="M74 32 L86 32 C93 39 97 49 99 59 C101 70 109 80 124 87 L36 87 C51 80 59 70 61 59 C63 49 67 39 74 32 Z" fill="#241C3E"/>
+      <path d="M36 102 C35 114 36 128 39 142 C44 168 53 193 61 205 C63 207 64 208 65 208 L95 208 C96 208 97 207 99 205 C107 193 116 168 121 142 C124 128 125 114 124 102 Z" fill="#241C3E"/>
+      <g class="lamp-globe-fill">
+        <path d="M74 32 L86 32 C93 39 97 49 99 59 C101 70 109 80 124 87 L36 87 C51 80 59 70 61 59 C63 49 67 39 74 32 Z" fill="url(#globe)"/>
+        <path d="M36 102 C35 114 36 128 39 142 C44 168 53 193 61 205 C63 207 64 208 65 208 L95 208 C96 208 97 207 99 205 C107 193 116 168 121 142 C124 128 125 114 124 102 Z" fill="url(#globe)"/>
+      </g>
+      <path d="M74 32 L86 32 C93 39 97 49 99 59 C101 70 109 80 124 87 L36 87 C51 80 59 70 61 59 C63 49 67 39 74 32 Z" fill="none" stroke="#0E0B20" stroke-width="2"/>
+      <path d="M36 102 C35 114 36 128 39 142 C44 168 53 193 61 205 C63 207 64 208 65 208 L95 208 C96 208 97 207 99 205 C107 193 116 168 121 142 C124 128 125 114 124 102 Z" fill="none" stroke="#0E0B20" stroke-width="2"/>
+      <path d="M63 208 L97 208 C98 214 101 218 104 221 L56 221 C59 218 62 214 63 208 Z" fill="#0E0B20"/>
+      <rect x="34" y="85" width="92" height="18" rx="2" fill="#B08D3E"/>
+      <g stroke="#6d5423" stroke-width="1.8" opacity=".55">
+        <line x1="41" y1="89" x2="41" y2="99"/><line x1="47" y1="89" x2="47" y2="99"/>
+        <line x1="53" y1="89" x2="53" y2="99"/><line x1="59" y1="89" x2="59" y2="99"/>
+        <line x1="65" y1="89" x2="65" y2="99"/><line x1="95" y1="89" x2="95" y2="99"/>
+        <line x1="101" y1="89" x2="101" y2="99"/><line x1="107" y1="89" x2="107" y2="99"/>
+        <line x1="113" y1="89" x2="113" y2="99"/><line x1="119" y1="89" x2="119" y2="99"/>
+      </g>
+      <rect x="67" y="80" width="26" height="28" rx="2" fill="#B08D3E"/>
+      <g fill="#6d5423">
+        <circle cx="80" cy="87" r="4.6"/><circle cx="80" cy="101" r="4.6"/>
+        <circle cx="73" cy="94" r="4.6"/><circle cx="87" cy="94" r="4.6"/>
+        <circle cx="80" cy="94" r="5.4"/>
+      </g>
+      <circle cx="80" cy="94" r="2.6" fill="#B08D3E"/>
+      <rect x="56" y="221" width="48" height="13" rx="2" fill="#0E0B20"/>
+      <path d="M55 234 L105 234 C108 238 108 243 105 247 L55 247 C52 243 52 238 55 234 Z" fill="#0E0B20"/>
+      <path d="M57 247 L103 247 C95 259 91 269 90 277 L70 277 C69 269 65 259 57 247 Z" fill="#0E0B20"/>
+      <g fill="#F6EFE2" opacity=".28">
+        <circle cx="73" cy="255" r="1.6"/><circle cx="73" cy="260" r="1.4"/><circle cx="73" cy="265" r="1.2"/>
+        <circle cx="80" cy="257" r="1.6"/><circle cx="80" cy="262" r="1.4"/><circle cx="80" cy="267" r="1.2"/>
+        <circle cx="87" cy="255" r="1.6"/><circle cx="87" cy="260" r="1.4"/><circle cx="87" cy="265" r="1.2"/>
+      </g>
+      <rect x="63" y="277" width="34" height="11" rx="5.5" fill="#0E0B20"/>
+      <path d="M70 288 L90 288 L93.5 540 L66.5 540 Z" fill="#0E0B20"/>
+      <g stroke="#F6EFE2" stroke-width="1.1" opacity=".3">
+        <line x1="74" y1="294" x2="71.5" y2="534"/>
+        <line x1="80" y1="294" x2="80" y2="534"/>
+        <line x1="86" y1="294" x2="88.5" y2="534"/>
+      </g>
+      <rect x="62.5" y="540" width="35" height="9" rx="4.5" fill="#0E0B20"/>
+      <path d="M60 549 L100 549 C99 558 98 566 96 572 L64 572 C62 566 61 558 60 549 Z" fill="#0E0B20"/>
+      <ellipse cx="80" cy="578" rx="36" ry="9" fill="#0E0B20"/>
+      <path d="M58 584 C56 597 51 608 46 614 L114 614 C109 608 104 597 102 584 Z" fill="#0E0B20"/>
+      <rect x="42" y="610" width="76" height="10" rx="5" fill="#0E0B20"/>
+      <path d="M48 620 L112 620 L116 632 L44 632 Z" fill="#0E0B20"/>
+      <rect x="30" y="632" width="100" height="8" rx="1" fill="#0E0B20" opacity=".55"/>
+    </svg>
+  </div>
+
+  <!-- palm silhouettes -->
+  <div class="palms" aria-hidden="true">
+    <svg style="left:4%;width:70px;height:130px" viewBox="0 0 100 200"><path d="M48 200 L52 200 L50 70 Z M50 70 C30 60 12 62 2 76 C20 68 38 70 50 78 M50 70 C70 60 88 62 98 76 C80 68 62 70 50 78 M50 70 C40 50 26 42 10 44 C28 48 42 58 48 72 M50 70 C60 50 74 42 90 44 C72 48 58 58 52 72 M50 70 C48 52 52 38 62 28 C54 42 52 56 54 70"/></svg>
+    <svg style="left:16%;width:52px;height:96px" viewBox="0 0 100 200"><path d="M48 200 L52 200 L50 70 Z M50 70 C30 60 12 62 2 76 C20 68 38 70 50 78 M50 70 C70 60 88 62 98 76 C80 68 62 70 50 78 M50 70 C40 50 26 42 10 44 C28 48 42 58 48 72 M50 70 C60 50 74 42 90 44 C72 48 58 58 52 72"/></svg>
+    <svg style="right:6%;width:64px;height:118px" viewBox="0 0 100 200"><path d="M48 200 L52 200 L50 70 Z M50 70 C30 60 12 62 2 76 C20 68 38 70 50 78 M50 70 C70 60 88 62 98 76 C80 68 62 70 50 78 M50 70 C40 50 26 42 10 44 C28 48 42 58 48 72 M50 70 C60 50 74 42 90 44 C72 48 58 58 52 72 M50 70 C48 52 52 38 62 28 C54 42 52 56 54 70"/></svg>
+    <svg style="right:20%;width:46px;height:84px" viewBox="0 0 100 200"><path d="M48 200 L52 200 L50 70 Z M50 70 C30 60 12 62 2 76 C20 68 38 70 50 78 M50 70 C70 60 88 62 98 76 C80 68 62 70 50 78 M50 70 C40 50 26 42 10 44 C28 48 42 58 48 72 M50 70 C60 50 74 42 90 44 C72 48 58 58 52 72"/></svg>
+  </div>
+
+  <div class="hero-text">
+    <div class="eyebrow">City of Phoenix · Historic Streetlight Restoration</div>
+    <h1>Restoring the Encanto-Palmcroft lights, <em>for the next generation</em></h1>
+    <p class="lede">The restoration of Encanto-Palmcroft's historic cast streetlights begins with a single pole — carefully removed and hand-delivered to historic preservation specialists in El Paso, Texas, where the plan to preserve the neighborhood's lights takes shape.</p>
+    <div class="status"><span>STATUS&nbsp;·&nbsp;<b>First Pole · Removal</b></span><span>UPDATED&nbsp;·&nbsp;<b>July 2026</b></span></div>
+  </div>
+
+  <div class="ground"></div>
+  <div class="cue">↓ FOLLOW THE WORK</div>
+</div>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <span class="tk">ORIGINAL CAST-IRON STREETLIGHTS&nbsp;&nbsp;✦&nbsp;&nbsp;IT STARTS WITH ONE POLE&nbsp;&nbsp;✦&nbsp;&nbsp;RE-CAST FROM THE ORIGINALS&nbsp;&nbsp;✦&nbsp;&nbsp;RESTORED IN <b>EL PASO, TX</b>&nbsp;&nbsp;✦&nbsp;&nbsp;RETURNED TO <b>ENCANTO-PALMCROFT</b>&nbsp;&nbsp;✦&nbsp;&nbsp;A PARTNERSHIP WITH THE <b>CITY OF PHOENIX</b>&nbsp;&nbsp;✦&nbsp;&nbsp;PRESERVED FOR THE NEXT GENERATION&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section about">
+  <div class="wrap">
+    <div class="label">About the project</div>
+    <h2>Deconstructed, re-cast, and rebuilt — not replaced.</h2>
+    <p>These lights have stood over Encanto-Palmcroft for generations. Decades of weather and wear have taken a toll on the original castings — visible in the corrosion at the bases and joints — so rather than swap them for modern replacements, the City of Phoenix is having them fully restored.</p>
+    <p>It starts with one pole. The first light is being carefully removed and hand-delivered to a historic preservation team in El Paso, Texas. Working from that original, the team will deconstruct and document every component and create molds, so new parts can be cast that match the historic profile exactly — from the glass globe and brass band down to the ornamental base. This first restoration establishes the plan for preserving the rest of the neighborhood's lights going forward.</p>
+
+    <div class="phases">
+      <div class="phase current">
+        <div class="p-name">First Pole Removal</div>
+        <div class="p-desc">Taking the first light out of service and carefully removing it from its base.</div>
+      </div>
+      <div class="phase">
+        <div class="p-name">Hand Delivery to El Paso</div>
+        <div class="p-desc">Personally driven and delivered to the historic preservation team in El Paso, Texas.</div>
+      </div>
+      <div class="phase">
+        <div class="p-name">Molds &amp; Casting</div>
+        <div class="p-desc">The original components are deconstructed and used to create molds for casting new parts.</div>
+      </div>
+      <div class="phase">
+        <div class="p-name">Rebuild</div>
+        <div class="p-desc">Reconstruction using preserved originals and newly cast components — proving out the process for the poles that follow.</div>
+      </div>
+      <div class="phase">
+        <div class="p-name">Return &amp; Relighting</div>
+        <div class="p-desc">The restored light comes home to the neighborhood — and the plan for the remaining lights moves forward with the City.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section log">
+  <div class="wrap">
+    <div class="label">Restoration log</div>
+    <h2>Progress, in photos.</h2>
+    <p class="log-intro">Updates from the field and the shop, newest first. Scan the plaque anytime — this page grows as the work does.</p>
+    <p class="tap-hint">TAP ANY PHOTO TO VIEW FULL SIZE</p>
+    <div id="log-entries"></div>
+  </div>
+</section>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close">CLOSE ✕</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-cap" id="lb-cap"></p>
+</div>
+
+<!-- ================= CREDIT + FOOTER ================= -->
+<div class="credit">
+  <div class="wrap">
+    <div class="c-line">Restoration performed for the City of Phoenix by</div>
+    <img src="photos/ptc-logo.png" alt="Power Tech Contracting">
+  </div>
+</div>
+<footer>
+  <div class="wrap">
+    <div>Encanto-Palmcroft Historic Streetlight Restoration · Phoenix, Arizona</div>
+    <div class="foot-line">THIS PAGE IS INFORMATIONAL ONLY AND DOES NOT ACCEPT COMMENTS OR SUBMISSIONS.</div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   HOW TO ADD A PHOTO UPDATE (the only thing you ever edit):
+
+   1. Upload your photo to the "photos" folder in the site's
+      GitHub repository (any phone photo — JPG or PNG).
+   2. Copy one block below, paste it at the TOP of the list,
+      and change the three lines.
+   3. Commit. The page updates in about a minute.
+
+   Newest entries go first.
+   ========================================================== */
+
+const ENTRIES = [
+  {
+    date: "July 6, 2026",
+    photo: "photos/luminaire-1512.jpg",
+    caption: "Before removal — an original acorn-style textured glass luminaire with its ornamental brass crown, photographed during pre-removal documentation."
+  },
+  {
+    date: "July 6, 2026",
+    photo: "photos/coronado-street.jpg",
+    caption: "At home among the palms of Encanto-Palmcroft, where these lights have stood for generations. Each one returns to its same corner once the restoration is complete."
+  }
+];
+
+/* ---- rendering (no need to touch below this line) ---- */
+const container = document.getElementById("log-entries");
+if (ENTRIES.length === 0) {
+  container.innerHTML = '<div class="empty-note">FIRST UPDATE COMING SOON — removal is being scheduled. Scan the plaque again in a week or two.</div>';
+} else {
+  container.innerHTML = ENTRIES.map((e,i) => `
+    <div class="entry">
+      <div class="entry-date">${e.date}</div>
+      <div class="frame" data-i="${i}">
+        <img src="${e.photo}" alt="${e.caption.replace(/"/g,'&quot;')}" loading="lazy"
+             onerror="this.closest('.entry').style.display='none'">
+        <p class="entry-caption">${e.caption}</p>
+      </div>
+    </div>`).join("");
+}
+
+/* lightbox */
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCap = document.getElementById('lb-cap');
+document.querySelectorAll('.frame').forEach(f => {
+  f.addEventListener('click', () => {
+    const e = ENTRIES[+f.dataset.i];
+    lbImg.src = e.photo; lbImg.alt = e.caption; lbCap.textContent = e.caption;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+lb.addEventListener('click', closeLB);
+document.getElementById('lb-close').addEventListener('click', closeLB);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+
+/* scroll-reveal */
+const io = new IntersectionObserver(es => {
+  es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('vis'); io.unobserve(x.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.entry').forEach(el => io.observe(el));
+
+/* twinkling stars */
+const stars = document.getElementById('stars');
+for (let i = 0; i < 54; i++) {
+  const s = document.createElement('i');
+  const o = (0.18 + Math.random() * 0.55).toFixed(2);
+  s.style.left = (Math.random() * 100) + '%';
+  s.style.top = (Math.random() * 46) + '%';
+  s.style.setProperty('--o', o);
+  s.style.opacity = o;
+  const sz = Math.random() < 0.85 ? 2 : 3;
+  s.style.width = s.style.height = sz + 'px';
+  s.style.animationDelay = (Math.random() * 3.4).toFixed(2) + 's';
+  stars.appendChild(s);
+}
+
+/* ignite the lamp shortly after load */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('hero').classList.add('lit'), 350);
+});
+</script>
+
+</body>
+</html>
